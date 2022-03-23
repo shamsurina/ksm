@@ -40,7 +40,13 @@
                                         <td>{{ $todos->firstItem() + $key }}</td>
                                         <td>{{ $todo->name }}</td>
                                         <td>{{ $todo->status }}</td>
-                                        <td><button class="btn btn-primary">Done</button></td>
+                                        <td><button class="btn btn-primary">Done</button>
+                                            <form action="todos/{{ $todo->id}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger" type="submit">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr>
